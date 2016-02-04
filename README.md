@@ -25,7 +25,7 @@ start coding.**
 Here's what to do:
 
 - Get things set up
-  - [ ] Review the [Assignment workflow](https://github.com/hmc-cs111-spring2016/hmc-cs111-spring2016.github.io/wiki/Assignment-HOWTO#connect-local), and follow it to get the materials for this lab.
+  - [ ] Review the [Assignment workflow](https://github.com/hmc-cs111-spring2016/hmc-cs111-spring2016.github.io/wiki/Assignment-HOWTO), and follow it to get the materials for this lab.
   - [ ] Read [Installing Scala](https://github.com/hmc-cs111-spring2016/hmc-cs111-spring2016.github.io/wiki/Installing-Scala), if you want to install Scala on your own machine.
 
 - Work on the assignment
@@ -128,7 +128,7 @@ Scala. Some possible topics include:
   - What Scala features would you like to learn more about?
 
 ## Peer-review other people's work
-You'll comment on at least two other people's work. Look at the 
+You'll comment on at least one other person's work. Look at the 
 [peer review table](https://github.com/hmc-cs111-spring2016/practice-scala/wiki/Peer-review) 
 to see whom you should review. You should look through their
 solutions to each of the exercises, as well as their `scala-thoughts.md` file.
