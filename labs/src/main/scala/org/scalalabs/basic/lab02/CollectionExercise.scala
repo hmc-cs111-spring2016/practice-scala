@@ -32,8 +32,37 @@ object CollectionExercise01 {
    * Case 3: so it is okay if you want to just give up
    *
    */
+  def repl(c:Char):Char = {
+    Map('a' -> 'y',
+    'b' -> 'h',
+    'c' -> 'e',
+    'd' -> 's',
+    'e' -> 'o',
+    'f' -> 'c',
+    'g' -> 'v',
+    'h' -> 'x',
+    'i' -> 'd',
+    'j' -> 'u',
+    'k' -> 'i',
+    'l' -> 'g',
+    'm' -> 'l',
+    'n' -> 'b',
+    'o' -> 'k',
+    'p' -> 'r',
+    'q' -> 'z',
+    'r' -> 't',
+    's' -> 'n',
+    't' -> 'w',
+    'u' -> 'j',
+    'v' -> 'p',
+    'w' -> 'f',
+    'x' -> 'm',
+    'y' -> 'a',
+    'z' -> 'q',
+    ' ' -> ' ')(c)
+  }
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+    lines.map((line:String) => line.map(repl))
   }
 }
 /*========================================================== */
@@ -50,7 +79,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+    persons.filter((x:Person) => x.age >= 18).groupBy { (x:Person) => 10 * (x.age/10) }
   }
 }
 
@@ -65,7 +94,7 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
+    !seq.indices.tail.map((i: Int) => (seq(i) > seq(i-1))).contains(false)
 
 }
 /*========================================================== */
@@ -76,6 +105,6 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines.map((line: String) => line.split(' ').map((word:String) => word.length).max).max
   }
 }
