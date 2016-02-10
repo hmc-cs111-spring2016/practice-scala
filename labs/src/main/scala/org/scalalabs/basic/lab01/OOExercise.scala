@@ -75,6 +75,4 @@ object Euro {
   }
 }
 
-abstract class Currency(val symbol: String){
-  
-}
+abstract class Currency(val symbol: String)
