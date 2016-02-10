@@ -33,7 +33,36 @@ object CollectionExercise01 {
    *
    */
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+    lines.map { line => 
+                line.map( (a:Char) => a match {
+                  case 'a' => 'y'
+                  case 'b' => 'h'
+                  case 'c' => 'e'
+                  case 'd' => 's'
+                  case 'e' => 'o'
+                  case 'f' => 'c'
+                  case 'g' => 'v'
+                  case 'h' => 'x'
+                  case 'i' => 'd'
+                  case 'j' => 'u'
+                  case 'k' => 'i'
+                  case 'l' => 'g'
+                  case 'm' => 'l'
+                  case 'n' => 'b'
+                  case 'o' => 'k'
+                  case 'p' => 'r'
+                  case 'q' => 'z'
+                  case 'r' => 't'
+                  case 's' => 'n'
+                  case 't' => 'w'
+                  case 'u' => 'j'
+                  case 'v' => 'p'
+                  case 'w' => 'f'
+                  case 'x' => 'm'
+                  case 'y' => 'a'
+                  case 'z' => 'q'
+                  case ' ' => ' '
+                } ) }
   }
 }
 /*========================================================== */
@@ -50,7 +79,36 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+//    // filter adults
+//		List<Person> adults = new ArrayList<Person>();
+//		for (Person p : persons) {
+//			if (p.getAge() >= 18) {
+//				adults.add(p);
+//			}
+//		}
+//
+//		// sort
+//		Collections.sort(adults, new Comparator<Person>() {
+//			public int compare(Person p1, Person p2) {
+//				return p1.getName().compareTo(p2.getName());
+//			}
+//		});
+    
+      persons.filter{p:Person => (p.age >= 18)}.sortBy(_.name).groupBy(_.age / 10 * 10)
+
+//
+//		// group by age group
+//		Map<Integer, List<Person>> adultsPerAgeGroup = new TreeMap<Integer, List<Person>>();
+//		for (Person person : adults) {
+//			int ageGroup = person.getAge() / 10 * 10;
+//			List<Person> ageGroupPersons = adultsPerAgeGroup.get(ageGroup);
+//			if (ageGroupPersons == null) {
+//				ageGroupPersons = new ArrayList<Person>();
+//			}
+//			ageGroupPersons.add(person);
+//			adultsPerAgeGroup.put(ageGroup, ageGroupPersons);
+//		}
+//		return adultsPerAgeGroup;
   }
 }
 
@@ -65,7 +123,18 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
+      seq == seq.sorted
+      
+//    Alternatively... (I'm not smart sometimes)
+//    if (seq.isEmpty) {
+//      true
+//    }
+//    else if (seq.length == 1) {
+//      true
+//    }
+//    else {
+//      seq(0) <= seq(1) && checkValuesIncrease(seq.tail)
+//    }
 
 }
 /*========================================================== */
@@ -76,6 +145,8 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines.map { line:String => line.split(" ").map{ word:String => word.length }.max }.max
+    // reduceLeft{(a, b) => (if (a.length > b.length) a else b)}
+    // .reduceLeft{ (a, b) => math.max(a.length, b.length)} .max
   }
 }
