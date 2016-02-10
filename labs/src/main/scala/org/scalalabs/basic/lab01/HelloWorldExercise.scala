@@ -45,7 +45,7 @@ object HelloWorld {
    * More on method declarations can be found here:
    * http://programming-scala.labs.oreilly.com/ch02.html#MethodDeclarationsAndDefinitions
    */
-	def echo(text: String): String = "Echo"
+	def echo(text: String): String = text
 }
 
 
@@ -79,7 +79,7 @@ object HelloWorld {
 object HelloWorldClassAndObject {
 	def apply(initialText:String):HelloWorldClassAndObject = {
 		new HelloWorldClassAndObject {
-			val text="Hello"
+			val text= initialText
 		}
 	}
 }
