@@ -8,18 +8,18 @@ import scala.language.implicitConversions
  * In order for the tests to pass you need to do the following:
  * 
  * Exercise 1:
- * - Create a class Euro
- * - Provide it with two constructor parameters: euro:Int, cents:Int
- * - Provide the cents field with default value: 0
- * - Provide an immutable field named: inCents that converts euro + cents into cents.
- * - Create an object Euro with a factory method named: fromCents that creates an Euro based on cents.
- * - Create a method named: + to the Euro class that adds another Euro
- * - Create a method named: * to the Euro class that multiplies an Euro by an integer
+ * - Create a class Euro x
+ * - Provide it with two constructor parameters: euro:Int, cents:Int x
+ * - Provide the cents field with default value: 0 x
+ * - Provide an immutable field named: inCents that converts euro + cents into cents. x
+ * - Create an object Euro with a factory method named: fromCents that creates an Euro based on cents. x
+ * - Create a method named: + to the Euro class that adds another Euro x
+ * - Create a method named: * to the Euro class that multiplies an Euro by an integer x
  * 
  * Exercise 2:
- * - Create an abstract class Currency
- * - Provide it with one constructor parameter: symbol:String
- * - Extend the previously created Euro class from Currency
+ * - Create an abstract class Currency x
+ * - Provide it with one constructor parameter: symbol:String x
+ * - Extend the previously created Euro class from Currency x
  * - Override the toString method of Euro to represent the following String:
  *   -> symbol + ': ' + euro + ',' + cents.  E.g: EUR 200,05
  * - In case the cents are 0 use this representation:
@@ -40,6 +40,15 @@ import scala.language.implicitConversions
  *   of type [[org.scalalabs.basic.lab01.CurrencyConverter]]
  * - Use the implicit CurrencyConverter to do the conversion. 
  */
-class Euro {
+abstract class Currency (val symbol: String) 
 
+class Euro (val euro: Int, val cents: Int = 0) extends Currency("EUR") {
+  def inCents: Int = euro * 100 + cents
+  def +(newEuro: Euro): Euro = Euro.fromCents(inCents + newEuro.inCents)
+  def *(factor: Int): Euro = Euro.fromCents(inCents * factor)
+  override def toString: String = s"$symbol: $euro,${if (cents > 0) f"$cents%02d" else "--"}"
+}
+
+object Euro {
+  def fromCents(cents: Int): Euro =  new Euro(cents/100, cents % 100)
 }
