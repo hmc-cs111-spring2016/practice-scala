@@ -94,7 +94,10 @@ object RecursionPatternMatchingExercise {
    * List(List(1,2,3), List('A, 'B, 'C), List('a, 'b, 'c)) -> List(List(1, 'A, 'a), List(2, 'B, 'b), List(3, 'C, 'c))
    */
   def zipMultiple(in: List[List[_]]): List[List[_]] = {
-    error("fix me")
+    in match {
+      case l if l.head.length == 0 => List()
+      case l => List(l.map((a) => a.head)) ++ zipMultiple(l.map((a) => a.tail))
+    }
   }
 
   /**
@@ -102,7 +105,10 @@ object RecursionPatternMatchingExercise {
    * List(List(1), List('A, 'B, 'C), List('a, 'b)) -> List(List(1, 'A, 'a))
    */
   def zipMultipleWithDifferentSize(in: List[List[_]]): List[List[_]] = {
-    error("fix me")
+    in match {
+      case l if (l.map((a) => a.length)).min == 1 => List(l.map((a) => a.head))
+      case l => List(l.map((a) => a.head)) ++ zipMultipleWithDifferentSize(l.map((a) => a.tail))
+    }
   }
 
 }
