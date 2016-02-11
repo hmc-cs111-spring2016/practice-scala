@@ -20,9 +20,10 @@ object ListManipulationExercise02 {
    */
   def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
     (l1, l2) match {
+      case (Nil, Nil) => Nil
       case (Nil, ys) => ys
       case (xs, Nil) => xs
-      case (xs, ys) => (l1,l2).zipped.map(_ + _)
+      case (xs, ys) => xs.head + ys.head :: sumOfTwo(xs.tail, ys.tail)
     }
   }
 
