@@ -36,7 +36,8 @@ object CollectionExercise01 {
     val input = "aozejp mysljylc kd kxveddknmc re jsicpdrysirbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcdde kr kd eoya kw aej tysr re ujdr lkgc jv"
     val output = "yeqour language is impossible to understandthere are twenty six factorial possibilitiesso it is okay if you want to just give up"
     val dict = input.zip(output).toMap
-    lines.map {line => line.map{char => dict.apply(char)}}
+    
+    lines.map { line => line.map{ char => dict.apply(char)}}
   }
 }
 /*========================================================== */
