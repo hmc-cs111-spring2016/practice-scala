@@ -15,14 +15,15 @@ object ListManipulationExercise01 {
    * 
    */
   def firstElementInList[T](l: List[T]): T = {
-    l.head
+    //buildin
+    null.asInstanceOf[T]
   }
 
   /**
    * Get the sum of all the elements in the list, e.g. sumOfList(List(1,2,3)) = 6.
    */
   def sumOfList(l: List[Int]): Int = {
-    l.reduceLeft(_ + _)
+    error("fix me")
   }
 
   /**
@@ -34,7 +35,7 @@ object ListManipulationExercise01 {
    *  - ... etc
    */
   def lastElementInList[T](l: List[T]): T = {
-    l.last
+    error("fix me")
   }
 
    /**
@@ -46,7 +47,7 @@ object ListManipulationExercise01 {
    *  - ... etc
    */
   def nthElementInList[T](n: Int, l: List[T]): T = {
-    l(n)
+    error("fix me")
   }
 
   /**
@@ -58,7 +59,7 @@ object ListManipulationExercise01 {
    *  - ... etc 
    */
   def concatLists[T](l1: List[T], l2: List[T]): List[T] = {
-    l1.union(l2)
+    error("fix me")
   }
 
   /**
@@ -70,7 +71,7 @@ object ListManipulationExercise01 {
    * 
    */
   def sortList[T <% Ordered[T]](list: List[T]): List[T] = {
-    list.sorted
+    error("fix me")
   }
 
   /**
@@ -78,7 +79,7 @@ object ListManipulationExercise01 {
    * Again, easy to implement using built-in functionality, but also possible to implement in your own free-style way.
    */
   def elementExists[T](l: List[T], e: T): Boolean = {
-    l.contains(e)
+    error("fix me")
   }
 
   /**
@@ -87,7 +88,7 @@ object ListManipulationExercise01 {
    * pattern match or some other method.
    */
   def oddElements(iList: List[Int]): List[Int] = {
-    iList.filter { x => (x % 2 == 1) }
+    error("fix me")
   }
 
   /**
@@ -98,9 +99,7 @@ object ListManipulationExercise01 {
    * Implement it whatever way suites you best. Hint: it can be done in a neat way using recursion. 
    */
   def tails[T](l: List[T]): List[List[T]] = {
-    // base case
-    if (l.isEmpty) List(List())
-    else l :: tails(l.tail)
+    error("fix me")
   }
 }
 

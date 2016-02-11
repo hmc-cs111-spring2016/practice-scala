@@ -9,45 +9,54 @@ class OOExerciseTest extends Specification {
 
   "Exercise 1: Creating an Euro" should {
     "be initialized correctly" in {
-          val e = new Euro(1, 5)
-          e.euro ==== 1
-          e.cents ==== 5
+      skipped("Uncomment and fix me")
+      //      val e = new Euro(1, 5)
+      //      e.euro ==== 1
+      //      e.cents ==== 5
+
     }
     "have correct default value for cents" in {
-          val e = new Euro(2)
-          e.euro ==== 2
-          e.cents ==== 0
+      skipped("Uncomment and fix me")
+      //      val e = new Euro(2)
+      //      e.euro ==== 2
+      //      e.cents ==== 0
     }
     "convert amount correctly to cents" in {
-          val e = new Euro(2, 45)
-          e.inCents ==== 245
+      skipped("Uncomment and fix me")
+      //      val e = new Euro(2, 45)
+      //      e.inCents ==== 245
     }
     "be created by cents" in {
-          val e = Euro.fromCents(245)
-          e.euro ==== 2
-          e.cents ==== 45
+      skipped("Uncomment and fix me")
+      //      val e = Euro.fromCents(245)
+      //      e.euro ==== 2
+      //      e.cents ==== 45
     }
     "add another euro correctly" in {
-          val res = new Euro(1, 50) + new Euro(2, 70)
-          res.euro ==== 4
-          res.cents ==== 20
+      skipped("Uncomment and fix me")
+      //      val res = new Euro(1, 50) + new Euro(2, 70)
+      //      res.euro ==== 4
+      //      res.cents ==== 20
     }
     "multiply correctly by a factor" in {
-          val res = new Euro(1, 50) * 3
-          res.euro ==== 4
-          res.cents ==== 50
+      skipped("Uncomment and fix me")
+      //      val res = new Euro(1, 50) * 3
+      //      res.euro ==== 4
+      //      res.cents ==== 50
     }
   }
   "Exercise 2: an Euro" should {
-    "be a subclass of Currency" in {
-          val e: Currency = new Euro(2, 5)
-          e.symbol ==== "EUR"
+    "be a cubclass of Currency" in {
+      skipped("Uncomment and fix me")
+      //      val e: Currency = new Euro(2, 5)
+      //      e.symbol ==== "EUR"
     }
     "have correct toString representation" in {
-            val e = new Euro(2, 5)
-            e.toString ==== "EUR: 2,05"
-            val e2 = new Euro(2)
-            e2.toString ==== "EUR: 2,--"
+      skipped("Uncomment and fix me")
+      //      val e = new Euro(2, 5)
+      //      e.toString ==== "EUR: 2,05"
+      //      val e2 = new Euro(2)
+      //      e2.toString ==== "EUR: 2,--"
     }
   }
   "OPTIONAL Exercise 3: Euro with Order trait" should {

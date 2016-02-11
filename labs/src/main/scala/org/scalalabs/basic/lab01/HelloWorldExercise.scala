@@ -25,7 +25,7 @@ object HelloWorld {
    * More on variable declarations can be found here:
    * http://programming-scala.labs.oreilly.com/ch02.html#VariableDeclarationsAndDefinitions
    */
-	val sayHello: String = "Hello from Scala"
+	val sayHello: String = "FixMe"
 
 
   /**
@@ -45,7 +45,7 @@ object HelloWorld {
    * More on method declarations can be found here:
    * http://programming-scala.labs.oreilly.com/ch02.html#MethodDeclarationsAndDefinitions
    */
-	def echo(text: String): String = text
+	def echo(text: String): String = "FixMe"
 }
 
 
@@ -79,12 +79,12 @@ object HelloWorld {
 object HelloWorldClassAndObject {
 	def apply(initialText:String):HelloWorldClassAndObject = {
 		new HelloWorldClassAndObject {
-			val text=initialText
+			val text="FixMe"
 		}
 	}
 }
 
-abstract class HelloWorldClassAndObject{
+abstract class HelloWorldClassAndObject {
 	val text:String
 	def echo:String = text
 }
@@ -99,11 +99,11 @@ object HelloWorldWithTraits extends HelloTrait with WorldTrait {
  * - combine the 'helloMethod' of HelloTrait and the 'worldMethod' of WorldTrait to create a new message
  * - just replacing the FixMe string would of course be cheating :)
  */
-	def hello:String = s"$helloMethod $worldMethod"
+	def hello:String = "FixMe"
 }
 
 trait HelloTrait {
-	def helloMethod:String = "Hello"
+	def helloMethod:String = "FixMe"
 }
 
 trait WorldTrait {
