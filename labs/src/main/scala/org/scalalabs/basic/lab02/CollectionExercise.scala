@@ -33,7 +33,13 @@ object CollectionExercise01 {
    *
    */
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+    
+    val sampleIn = "ejp mysljylc kd kxveddknmc re jsicpdrysi rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd de kr kd eoya kw aej tysr re ujdr lkgc jv"
+    val sampleOut = "our language is impossible to understand there are twenty six factorial possibilities so it is okay if you want to just give up"
+
+    val map = sampleIn.zip(sampleOut).toMap + ('q' -> 'z')
+    
+    lines.map(l => l.toList.map(c => map.get(c).get ).mkString)
   }
 }
 /*========================================================== */
@@ -50,7 +56,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+    persons.filter(p => p.age >= 18).sortBy(_.name).groupBy(p => p.age / 10*10) 
   }
 }
 
@@ -64,9 +70,19 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,3)) == true
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
-  def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
-
+  def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean ={
+    seq match {
+      case Nil => true
+      case x::y::xs => if (y > x){
+        checkValuesIncrease(y::xs)
+      }
+      else {
+        false
+      }
+      case x => true 
+    }
+  }
+    
 }
 /*========================================================== */
 
@@ -76,6 +92,6 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines.map(l => l.split(" ").map(w => w.length).max).max
   }
 }
