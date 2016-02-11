@@ -32,8 +32,20 @@ object CollectionExercise01 {
    * Case 3: so it is okay if you want to just give up
    *
    */
+  val c1In = "ejp mysljylc kd kxveddknmc re jsicpdrysi"
+  val c2In = "rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd"
+  val c3In = "de kr kd eoya kw aej tysr re ujdr lkgc jv"
+  val c1Out = "our language is impossible to understand"
+  val c2Out = "there are twenty six factorial possibilities"
+  val c3Out = "so it is okay if you want to just give up"
+
+  def mapChars(in:String,out:String) = {in.zip(out).toMap}
+
+  val leftOutCharMap = Map('z'->'q', 'q'->'z')
+  val charMap = leftOutCharMap ++ mapChars(c1In,c1Out) ++ mapChars(c2In,c2Out) ++ mapChars(c3In,c3Out)
+
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+    lines.map(_.map(charMap))
   }
 }
 /*========================================================== */
@@ -50,7 +62,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+    persons.filter(_.age >= 18).sortBy(_.name).groupBy(_.age / 10 * 10)
   }
 }
 
@@ -65,7 +77,7 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
+    if (seq.length < 2) true else seq.init.zip(seq.tail).forall(t=>t._1<t._2)
 
 }
 /*========================================================== */
@@ -76,6 +88,6 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines.flatMap(_.split(" ")).map(_.length).max
   }
 }
