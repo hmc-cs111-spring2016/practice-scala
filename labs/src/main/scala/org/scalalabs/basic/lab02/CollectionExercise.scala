@@ -36,7 +36,7 @@ object CollectionExercise01 {
     val input = "aozejp mysljylc kd kxveddknmc re jsicpdrysirbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcdde kr kd eoya kw aej tysr re ujdr lkgc jv"
     val output = "yeqour language is impossible to understandthere are twenty six factorial possibilitiesso it is okay if you want to just give up"
     val dict = input.zip(output).toMap
-    lines.map {line => line.map{char => dict.apply(char)}}
+    lines.map { line => line.map{ char => dict.apply(char)}}
   }
 }
 /*========================================================== */
@@ -53,7 +53,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    persons filter (_.age >= 18) sortBy (_.name) groupBy ( _.age / 10 * 10)
+    error("fix me")
   }
 }
 
@@ -67,12 +67,9 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,3)) == true
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
-  def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean = 
-    seq match {
-      case Nil => true
-      case a::Nil => true
-      case a::b::xs => if (a >= b) false else checkValuesIncrease(b::xs)
-  }
+  def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
+    error("fix me")
+
 }
 /*========================================================== */
 
@@ -82,6 +79,6 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    lines.map(_.split(" ")).flatten.map(_.length()).max
+    error("fix me")
   }
 }
