@@ -25,11 +25,17 @@ object RecursionPatternMatchingExercise {
    * Create a method that checks that each subsequent value is greater than
    * the previous one.
    * E.g.:
-   * checkValuesIncrease(Seq(1,2,3)) == true
+   * checkValuesIncrease(Seq(1,2,3)) == true 
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease(seq: Seq[Int]): Boolean = {
-    error("fix me")
+    seq match {
+      case first::second::rest if second > first => checkValuesIncrease(second::rest)
+      case first::second::rest if second <= first => false
+      case first::rest => true
+      case Nil => true
+
+    }
   }
   
   /**
@@ -37,7 +43,11 @@ object RecursionPatternMatchingExercise {
    * List(1,1,2,3,1,1) -> List(1,1), List(2), List(3), List(1,1)
    */
   def groupConsecutive[T](in: List[T]): List[List[T]] = {
-    error("fix me")
+    in match {
+      case first::rest => in.takeWhile(_ == first)::groupConsecutive(in.drop((in.takeWhile(_ == first)).length))
+      case nil => List(Nil)
+
+    }
   }
 
   /**

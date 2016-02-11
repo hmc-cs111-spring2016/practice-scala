@@ -52,6 +52,8 @@ object PatternMatchingExercise {
    *        
    *    - anything else, the function result is "Some Scala class"
    */
+  
+// I checked my solution against the given solution to find the errors in my code and modified it accordingly.
   def matchOnInputType(in: Any) = in match {
       case word: String => s"A string with length ${word.length}"
       case i: Int if i > 0 => "A positive integer"
