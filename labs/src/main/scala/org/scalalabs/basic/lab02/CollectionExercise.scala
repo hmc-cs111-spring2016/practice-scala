@@ -33,7 +33,40 @@ object CollectionExercise01 {
    *
    */
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+    // The solution answer to this is much cooler than this way;
+    // I consulted Kutsko and Petrack since I didn't feel like decoding
+    // the cypher.
+    lazy val mapping = Map(
+      'a' -> 'y',
+      'b' -> 'h',
+      'c' -> 'e',
+      'd' -> 's',
+      'e' -> 'o',
+      'f' -> 'c',
+      'g' -> 'v',
+      'h' -> 'x',
+      'i' -> 'd',
+      'j' -> 'u',
+      'k' -> 'i',
+      'l' -> 'g',
+      'm' -> 'l',
+      'n' -> 'b',
+      'o' -> 'k',
+      'p' -> 'r',
+      'q' -> 'z',
+      'r' -> 't',
+      's' -> 'n',
+      't' -> 'w',
+      'u' -> 'j',
+      'v' -> 'p',
+      'w' -> 'f',
+      'x' -> 'm',
+      'y' -> 'a',
+      'z' -> 'q',
+      ' ' -> ' '
+     )
+        
+    lines map (_ map (mapping(_)))
   }
 }
 /*========================================================== */
@@ -50,7 +83,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+    persons filter (_.age >= 18) sortBy (_ name) groupBy (_.age/10 * 10)
   }
 }
 
@@ -65,7 +98,7 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
+    seq == seq.sorted
 
 }
 /*========================================================== */
@@ -76,6 +109,6 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines map (_.split(" ").map(_.length).max) max
   }
 }
