@@ -18,44 +18,61 @@ import sys._
 object PatternMatchingExercise {
 
   /*************************************************************************
-   *  pattern matching exercises
-   * For expected solution see unittest @PatternMatchingExerciseTest
-   *************************************************************************/
+  *  pattern matching exercises
+  * For expected solution see unittest @PatternMatchingExerciseTest
+  *************************************************************************/
 
   def describeLanguage(s: String): String = {
-    error("fix me")
+    s match {
+      case "Java" | "Smalltalk" => "OOP"
+      case "Clojure" | "Haskell" => "Functional"
+      case "Scala" => "Hybrid"
+      case "C" => "Procedural"
+      case _ => "Unknown"
+    }
   }
 
   /**
-   * Here's how matches should work. If `in` is:
-   * 
-   *    - a `String`, the function result is "A string with length n"
-   *       where `n` is the length of `in`
-   *       
-   *    - a positive `Integer`, the function result is "A positive integer"
-   *    
-   *    - an instance of class `Person`, the function result is "A person with name: n"
-   *       where `n` is the name of the person
-   *       
-   *    - a sequence with more than 10 elements, the function result is "Seq with more than 10 elements"
-   *    
-   *    - a sequence with at least three elements, the function result is "first: v1, second: v2, rest: tail"
-   *        where v1, v2, and tail are the corresponding values from the sequence
-   *        
-   *    - null, the function result is "A null value"
-   *        
-   *    - anything else, the function result is "Some Scala class"
-   */
+  * Here's how matches should work. If `in` is:
+  * 
+  *    - a `String`, the function result is "A string with length n"
+  *       where `n` is the length of `in`
+  *       
+  *    - a positive `Integer`, the function result is "A positive integer"
+  *    
+  *    - an instance of class `Person`, the function result is "A person with name: n"
+  *       where `n` is the name of the person
+  *       
+  *    - a sequence with more than 10 elements, the function result is "Seq with more than 10 elements"
+  *    
+  *    - a sequence with at least three elements, the function result is "first: v1, second: v2, rest: tail"
+  *        where v1, v2, and tail are the corresponding values from the sequence
+  *        
+  *    - null, the function result is "A null value"
+  *        
+  *    - anything else, the function result is "Some Scala class"
+  */
   def matchOnInputType(in: Any): String = {
-    error("fix me")
+    in match {
+      case s:String => "A string with length " + s.length
+      case i:Int if (i >= 0) => "A positive integer"
+      case p:Person => "A person with name: " + p.name
+      case seq:Seq[Any] if seq.length > 10 => "Seq with more than 10 elements"
+      case seq:Seq[Any] if seq.length > 3 => "first: " + seq(0) + ", second: " + seq(1) + ", rest: " + seq.tail.tail
+      case null => "A null value"
+      case _ => "Some Scala class"
+    }
   }
 
   /**
-   * If the person is older than 30, return an `Option` with the person's name;
-   *    otherwise return `None`
-   */
+  * If the person is older than 30, return an `Option` with the person's name;
+  *    otherwise return `None`
+  */
   def older(p: Person): Option[String] = {
-    error("fix me")
+    p.age match {
+      case i if i > 30 => Option(p.name)
+      case _ => None
+    }
   }
 }
 

@@ -11,7 +11,7 @@ object ListManipulationExercise02 {
    * As usual, various ways exist: pattern matching, folding, ...
    */
   def maxElementInList(l: List[Int]): Int = {
-    error("fix me")
+    l.reduce((x, y) => math.max(x,y))
   }
 
   /**
@@ -19,7 +19,13 @@ object ListManipulationExercise02 {
    * of the two list
    */
   def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
-    error("fix me")
+    if (l1.isEmpty) {
+      l2
+    } else if (l2.isEmpty) {
+      l1
+    } else {
+      l1.zip(l2).map(x => x._1 + x._2)
+    }
   }
 
   /**
@@ -27,7 +33,7 @@ object ListManipulationExercise02 {
    * method above
    */
   def sumOfMany(l: List[Int]*): List[Int] = {
-    error("fix me")
+    l.reduce((l1,l2) => sumOfTwo(l1,l2))
   }
 
   case class Person(age: Int, firstName: String, lastName: String)
