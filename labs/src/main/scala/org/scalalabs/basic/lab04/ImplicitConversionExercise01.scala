@@ -31,7 +31,7 @@ object ImplicitConversionExercise01 {
       //built in: our String will be converted to Scala's RichString, because this is defined a Scala
       //object called Predef. This is imported by the compiler by default.
       //
-      List[Char]()
+      s.toList
     }
 
   }
@@ -66,6 +66,10 @@ object ImplicitConversionExercise01 {
         degreeCelsius * 1.8 + 32
       }
     }
+    
+    implicit def celsiusToFahrenheit(f: Fahrenheit) = { new Celsius(ConversionHelper.fahrenheit2CelsiusConversion(f.fahrenheit)) }
+
+    implicit def fahrenheitToCelsius(c: Celsius) = { new Fahrenheit(ConversionHelper.celsius2FahrenheitConversion(c.degree)) }
   }
 
   /**============================================================================ */
@@ -82,13 +86,13 @@ object ImplicitConversionExercise01 {
       case class DurationBuilder(timeSpan: Long) {
         def now = new DateTime().getMillis()
 
-        //    def seconds = TODO your implementation here...
+        def seconds = (now/1000)%60
 
-        //    def minutes = TODO your implementation here...
+        def minutes = (now/60000)%60
 
-        //    def hours = TODO your implementation here...
+        def hours = (now/360000)%24
 
-        //    def days = TODO your implementation here...
+        def days = (now/8640000)
       }
 
       //TODO define some implicits that convert integers and longs to durations and builders to make it all work
