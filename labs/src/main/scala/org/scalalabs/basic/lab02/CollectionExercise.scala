@@ -32,8 +32,19 @@ object CollectionExercise01 {
    * Case 3: so it is okay if you want to just give up
    *
    */
-  def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+  
+  val inputs = "ejp mysljylc kd kxveddknmc re jsicpdrysi rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd de kr kd eoya kw aej tysr re ujdr lkgc jv"
+  val outputs = "our language is impossible to understand there are twenty six factorial possibilities so it is okay if you want to just give up"
+  val dict = (inputs.toList zip outputs.toList).toMap
+  
+  def translate(line: String): String = {
+    // Map sample inputs to outputs
+    line map dict
+  }
+  
+  def googleCodeJamGooglerese(lines: String*): Seq[String] = {    
+    //lines map (_ map table)
+    lines map (x => translate(x))
   }
 }
 /*========================================================== */
@@ -50,7 +61,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+    persons filter (_.age >= 18) sortWith (_.name < _.name) groupBy (person => person.age/10 * 10)
   }
 }
 
@@ -65,7 +76,7 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
+    seq == seq.sortWith(_<_) 
 
 }
 /*========================================================== */
@@ -74,8 +85,8 @@ object CollectionExercise04 {
   /**
    * Calculate the length of the longest word in a list of sentences.
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
-   */
+//   */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines.map(_.split("\\W+")).toList.flatten.sortWith(_.length > _.length).head.length
   }
 }
