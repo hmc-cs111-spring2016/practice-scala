@@ -11,7 +11,7 @@ object ListManipulationExercise02 {
    * As usual, various ways exist: pattern matching, folding, ...
    */
   def maxElementInList(l: List[Int]): Int = {
-    error("fix me")
+    l.sortWith(_>_).head
   }
 
   /**
@@ -19,7 +19,7 @@ object ListManipulationExercise02 {
    * of the two list
    */
   def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
-    error("fix me")
+    l1.zipAll(l2, 0, 0).map { case (a, b) => a + b }
   }
 
   /**
@@ -27,7 +27,9 @@ object ListManipulationExercise02 {
    * method above
    */
   def sumOfMany(l: List[Int]*): List[Int] = {
-    error("fix me")
+    var list = List[Int]()
+    l.foreach(x => list = sumOfTwo(list, x))
+    list
   }
 
   case class Person(age: Int, firstName: String, lastName: String)
@@ -39,29 +41,8 @@ object ListManipulationExercise02 {
    * in a one-liner.
    */
   def separateTheYoungFromTheOld(persons: List[Person]): List[List[String]] = {
-    var youngins: ListBuffer[Person] = new ListBuffer[Person]()
-    var elders: ListBuffer[Person] = new ListBuffer[Person]()
-    var validYoungNames: ListBuffer[String] = new ListBuffer[String]()
-    var validOldNames: ListBuffer[String] = new ListBuffer[String]()
-
-    for (person <- persons) {
-        if (person.age < 18) {
-          youngins += person
-        } else {
-          elders += person
-        }
-    }
-
-    var sortedYoung = youngins.toList.sortBy(_.age)
-    var sortedOld = elders.toList.sortBy(_.age)
-
-    for (young <- sortedYoung) {
-      validYoungNames += young.firstName
-    }
-    for (old <- sortedOld) {
-      validOldNames += old.firstName
-    }
-    List(validYoungNames.toList, validOldNames.toList)
+    // for each partition, order by first name then get that first name
+    persons.sortWith(_.age < _.age).partition(_.age < 18).productIterator.toList.map{ case y:List[Person] => y.sortWith(_.firstName < _.firstName).map(x => x.firstName.toString)}
   }
 
 }
