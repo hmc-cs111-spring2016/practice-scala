@@ -15,7 +15,6 @@ object ListManipulationExercise01 {
    *
    */
   def firstElementInList[T](l: List[T]): T = {
-    //buildin
     l.head
   }
 
@@ -88,18 +87,16 @@ object ListManipulationExercise01 {
    * pattern match or some other method.
    */
   def oddElements(iList: List[Int]): List[Int] = {
-    def myOdds(l: List[Int]): List[Int] = {
-      l match {
+    //feels like I'm writing SML in Java
+      iList match {
         case Nil => Nil
         case x :: xs => if (x % 2 == 1) {
-          x :: myOdds(xs)
+          x :: oddElements(xs)
         } else {
-          myOdds(xs)
+          oddElements(xs)
         }
-        //not happy about the indentation in the if/else... should all be on the right hand side of the '=>'
+        //not happy about the auto indentation in the if/else... should all be on the right hand side of the '=>'
       }
-    }
-    myOdds(iList)
   }
 
   /**
@@ -111,6 +108,7 @@ object ListManipulationExercise01 {
    */
   def tails[T](l: List[T]): List[List[T]] = {
 
+    //might try diff solutions later, so I made my own inner function
     def myTails(l: List[T]): List[List[T]] = {
       l match {
         case Nil     => Nil
