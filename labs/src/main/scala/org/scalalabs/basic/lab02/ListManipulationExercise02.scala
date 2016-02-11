@@ -11,7 +11,7 @@ object ListManipulationExercise02 {
    * As usual, various ways exist: pattern matching, folding, ...
    */
   def maxElementInList(l: List[Int]): Int = {
-    error("fix me")
+    l.max
   }
 
   /**
@@ -19,7 +19,13 @@ object ListManipulationExercise02 {
    * of the two list
    */
   def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
-    error("fix me")
+    if (l1.isEmpty){
+      l2
+    } else if (l2.isEmpty) {
+      l1
+    } else {
+      (l1.head + l2.head) +: sumOfTwo(l1.tail, l2.tail)
+    }
   }
 
   /**
@@ -27,7 +33,7 @@ object ListManipulationExercise02 {
    * method above
    */
   def sumOfMany(l: List[Int]*): List[Int] = {
-    error("fix me")
+    l.foldLeft(List.empty[Int])(sumOfTwo)
   }
 
   case class Person(age: Int, firstName: String, lastName: String)
@@ -39,29 +45,17 @@ object ListManipulationExercise02 {
    * in a one-liner.
    */
   def separateTheYoungFromTheOld(persons: List[Person]): List[List[String]] = {
-    var youngins: ListBuffer[Person] = new ListBuffer[Person]()
-    var elders: ListBuffer[Person] = new ListBuffer[Person]()
-    var validYoungNames: ListBuffer[String] = new ListBuffer[String]()
-    var validOldNames: ListBuffer[String] = new ListBuffer[String]()
+    //Don't try this at home, kids!
+    ((t:Tuple2[List[Person],List[Person]])=>List(t._1,t._2))(persons.sortBy(_.age).partition(_.age<18)).map(_.map(_.firstName))
 
-    for (person <- persons) {
-        if (person.age < 18) {
-          youngins += person
-        } else {
-          elders += person
-        }
-    }
-
-    var sortedYoung = youngins.toList.sortBy(_.age)
-    var sortedOld = elders.toList.sortBy(_.age)
-
-    for (young <- sortedYoung) {
-      validYoungNames += young.firstName
-    }
-    for (old <- sortedOld) {
-      validOldNames += old.firstName
-    }
-    List(validYoungNames.toList, validOldNames.toList)
+    /*here's a non-one-liner (yes, that is one line, there aren't any newlines)
+     so it's possible to see what this function actually does*/
+    
+    /*
+     val agePartition = persons.sortBy(_.age).partition(_.age<18) //This is a Tuple2 of lists
+     val partAsList = List(agePartition._1, agePartition._2) //Convert the tuple into a list
+     partAsList.map(_.map(_.firstName)) //We want to use map on both sublists, so map it.
+     */
   }
-
+  
 }
