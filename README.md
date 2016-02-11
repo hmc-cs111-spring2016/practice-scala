@@ -1,3 +1,5 @@
+[ScalaIDEVideo]: https://youtu.be/3HpsDJOZlsk
+
 # Practice Scala
 ###### _Submission deadline: Wednesday, February 10 at 11:59pm_
 ###### _Critique deadline: Friday, February 12 at 11:59pm_
@@ -27,6 +29,7 @@ Here's what to do:
 - Get things set up
   - [ ] Review the [Assignment workflow](https://github.com/hmc-cs111-spring2016/hmc-cs111-spring2016.github.io/wiki/Assignment-HOWTO), and follow it to get the materials for this lab.
   - [ ] Read [Installing Scala](https://github.com/hmc-cs111-spring2016/hmc-cs111-spring2016.github.io/wiki/Installing-Scala), if you want to install Scala on your own machine.
+  - [ ] Watch this [video tutorial][ScalaIDEVideo] for how to load this assignment into ScalaIDE.
 
 - Work on the assignment
   - [ ] Read the lab instructions, hints, and tips, below.
