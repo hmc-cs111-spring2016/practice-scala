@@ -1,2 +1,2 @@
-set SBT_OPTS=-Dfile.encoding=UTF8
-java %SBT_OPTS% -Xmx512M -jar ./sbt-launch-0.13.0.jar %* 
+set SCRIPT_DIR=%~dp0
+java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M -jar "%SCRIPT_DIR%sbt-launch.jar" %*
