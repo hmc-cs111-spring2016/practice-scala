@@ -25,8 +25,27 @@ object OptionExercise01 {
    * - does not exist: 					"not existing"
    */
   def roomState(rooms: Map[Int, Option[String]], room: Int): String = {
-    error("Fix me")
+      rooms.getOrElse(room, Some("na")) match {
+        case Some("na") => "not existing"
+        case None => "empty"
+        case Some("locked") => "not available"
+        case Some(num) => num
+      }
   }
+
+  //This solution also works, but I wanted to redo it with pattern matching
+
+  //   if (rooms contains room) {
+  //     rooms apply room match {
+  //       case None => "empty"
+  //       case Some("locked") => "not available"
+  //       case Some(num) => num
+  //     }
+
+  //   } else {
+  //       "not existing"
+  //     }
+  // }
 
 }
 
@@ -37,6 +56,19 @@ object OptionExercise02 {
    * to convert a possible numeric String (e.g. Some("12")) to an integer
    */
   def totalPeopleInRooms(rooms: Map[Int, Option[String]]): Int = {
-    error("Fix me")
+    ((rooms.keys).map(k => occupancy(rooms, k))).foldLeft(0)(_+_)
   }
+
+  def occupancy(rooms: Map[Int, Option[String]], room: Int): Int = {
+      rooms(room) match {
+        case None => 0
+        case Some("locked") => 0
+        case Some(num) => num.toInt
+      }
+  }
+
 }
+
+
+
+
