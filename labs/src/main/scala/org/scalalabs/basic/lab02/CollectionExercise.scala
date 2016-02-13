@@ -33,7 +33,30 @@ object CollectionExercise01 {
    *
    */
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+      //figure out missing character mapping
+    val input = "ejp mysljylc kd kxveddknmc re jsicpdrysi rbcpc ypc rtcsra dkh wyfrepkym veddknkmkrkcd de kr kd eoya kw aej tysr re ujdr lkgc jv " filterNot (_ == ' ')
+    val output = "our language is impossible to understand there are twenty six factorial possibilities so it is okay if you want to just give up" filterNot (_ == ' ')
+
+    val alphabet = 'a' to 'z'
+    val missingIn = alphabet filterNot (input contains _)
+    alphabet diff input
+
+    val missingOut = alphabet filterNot (output contains _)
+    alphabet diff output
+    //z and q, hint says z -> q, so remaining is: q -> z
+
+    //visualize missing chars in alphabet
+    val existingCharsSorted = input.toSet.toList.sorted.mkString
+    val visualMissingChars = alphabet.map(c => if (existingCharsSorted.contains(c)) c else ' ').mkString
+
+    //compute mapping
+    val initialMapping = (input zip output).toSet
+    //ensure 1 to 1 mapping
+    initialMapping.groupBy(_._1).values.forall(_.size == 1)
+
+    val mapper = Map('z' -> 'q', 'q' -> 'z', ' ' -> ' ').withDefaultValue('?') ++ initialMapping
+
+    lines.map(_ map mapper)
   }
 }
 /*========================================================== */
@@ -50,7 +73,7 @@ object CollectionExercise02 {
    * using a functional approach.
    */
   def groupAdultsPerAgeGroup(persons: Seq[Person]): Map[Int, Seq[Person]] = {
-    error("fix me")
+    persons.filter { x => x.age > 18 }.sortBy { x => x.name }.groupBy { x => x.age/10 }
   }
 }
 
@@ -65,7 +88,7 @@ object CollectionExercise03 {
    * checkValuesIncrease(Seq(1,2,2)) == false
    */
   def checkValuesIncrease[T <% Ordered[T]](seq: Seq[T]): Boolean =
-    error("fix me")
+      seq.tail.forall { x => x > seq(seq.indexOf(x)-1) } && seq(0) < seq(1)
 
 }
 /*========================================================== */
@@ -76,6 +99,6 @@ object CollectionExercise04 {
    * To keep it simple it's ok to use String.split to extract all words of a sentence.
    */
   def calcLengthLongestWord(lines: String*): Int = {
-    error("fix me")
+    lines.map(_.split(" ").map(_.length).max).max
   }
 }
