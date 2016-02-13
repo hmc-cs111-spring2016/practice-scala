@@ -15,15 +15,17 @@ object ListManipulationExercise01 {
    * 
    */
   def firstElementInList[T](l: List[T]): T = {
-    //buildin
-    null.asInstanceOf[T]
+    return l.head
   }
 
   /**
    * Get the sum of all the elements in the list, e.g. sumOfList(List(1,2,3)) = 6.
+   * Source: http://alvinalexander.com/scala/how-to-walk-scala-collections-reduceleft-foldright-cookbook
    */
   def sumOfList(l: List[Int]): Int = {
-    error("fix me")
+   // print(l.reduceRight((a,b) => (a + b)))
+   l.reduceRight((a,b) => (a + b))
+   // error("why....")
   }
 
   /**
@@ -35,7 +37,7 @@ object ListManipulationExercise01 {
    *  - ... etc
    */
   def lastElementInList[T](l: List[T]): T = {
-    error("fix me")
+    l.last
   }
 
    /**
@@ -47,7 +49,8 @@ object ListManipulationExercise01 {
    *  - ... etc
    */
   def nthElementInList[T](n: Int, l: List[T]): T = {
-    error("fix me")
+    //error("fix me")
+    l(n) 
   }
 
   /**
@@ -59,7 +62,7 @@ object ListManipulationExercise01 {
    *  - ... etc 
    */
   def concatLists[T](l1: List[T], l2: List[T]): List[T] = {
-    error("fix me")
+    l1.union(l2)
   }
 
   /**
@@ -71,7 +74,7 @@ object ListManipulationExercise01 {
    * 
    */
   def sortList[T <% Ordered[T]](list: List[T]): List[T] = {
-    error("fix me")
+    list.sorted
   }
 
   /**
@@ -79,16 +82,18 @@ object ListManipulationExercise01 {
    * Again, easy to implement using built-in functionality, but also possible to implement in your own free-style way.
    */
   def elementExists[T](l: List[T], e: T): Boolean = {
-    error("fix me")
+    l.contains(e)
   }
 
   /**
    * Get all odd elements in the list, i.e. oddElements(List(1,2,3,4,5)) = List(1,3,5)
    * As always, use either build-in functions (for instance the filter method), or roll your own way via a
    * pattern match or some other method.
+   * 
+   * Source: https://twitter.github.io/scala_school/collections.html
    */
   def oddElements(iList: List[Int]): List[Int] = {
-    error("fix me")
+    iList.filter((i: Int) => i % 2 == 1)
   }
 
   /**
@@ -97,9 +102,11 @@ object ListManipulationExercise01 {
    * For example: tails(List(1,2,3,4)) = List(List(1,2,3,4), List(2,3,4), List(3,4), List(4), List())
    *
    * Implement it whatever way suites you best. Hint: it can be done in a neat way using recursion. 
-   */
+   * Source: Looked at sample solution after getting stuck
+   * */
   def tails[T](l: List[T]): List[List[T]] = {
-    error("fix me")
+    if (l.isEmpty) List(Nil)
+    else l :: tails(l.tail) // woah cool
   }
 }
 

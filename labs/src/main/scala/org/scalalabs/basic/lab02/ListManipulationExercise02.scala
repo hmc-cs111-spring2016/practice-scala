@@ -11,23 +11,40 @@ object ListManipulationExercise02 {
    * As usual, various ways exist: pattern matching, folding, ...
    */
   def maxElementInList(l: List[Int]): Int = {
-    error("fix me")
+    l.max
   }
 
   /**
    * Calculate the sum of the equally position elements
    * of the two list
+   * 
+   * This was a lot more complex than expected, got confused, so I looked at the solution.
    */
   def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
-    error("fix me")
+     (l1, l2) match {
+        case (Nil, ys) => ys
+        case (xs, Nil) => xs
+        case (xs, ys) => xs zip ys map {case (a, b) => a + b} // I got roughly this line on my own,
+                                                              // but the nil cases I was unaware of
+     }
   }
 
   /**
    *  For this exercise preferably make use of the sumOfTwo
    * method above
+   * 
+   * Again, checked in with the solution. Just wasn't sure what this one was
+   * asking for.
    */
   def sumOfMany(l: List[Int]*): List[Int] = {
-    error("fix me")
+        def sumOfManyNestedLists(l: List[List[Int]]): List[Int] = {
+      println(l)
+      l match {
+        case head :: tail => sumOfTwo(head, sumOfManyNestedLists(tail))
+        case Nil => Nil
+      }
+    }
+    sumOfManyNestedLists(l.toList)
   }
 
   case class Person(age: Int, firstName: String, lastName: String)
